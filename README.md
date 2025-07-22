@@ -18,7 +18,7 @@ WarehouseManager is a backend inventory management system designed to help admin
 2. Run `schema.sql` to set up the database tables
 3. Run `data.sql` to seed the database with test warehouses and products
 4. Start the Spring Boot application via STS or `mvn spring-boot:run`
-5. Access endpoints locally at `http://localhost:9090`
+5. Access endpoints locally at `http://localhost:8080`
 
 ## API Endpoints (In Progress)
 
@@ -52,4 +52,17 @@ WarehouseManager is a backend inventory management system designed to help admin
 ## Author
 
 **Jeff Sherwood**  
+
+=======
+3. (Optional) Seed with test data using `data.sql`
+
+## Coming Soon
+
+-  Java Spring Boot backend API
+-  Authentication and role-based access control
+-  Cloud deployment with sample frontend integration
+
+## Author
+
+Jeff Sherwood 
 

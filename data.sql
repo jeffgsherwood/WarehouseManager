@@ -9,6 +9,9 @@ TRUNCATE TABLE warehouses;
 ALTER TABLE warehouses AUTO_INCREMENT = 1;
 ALTER TABLE products AUTO_INCREMENT = 1;
 
+# Gives us a fresh start each time
+TRUNCATE TABLE products;
+
 # Warehouse Setup
 INSERT INTO warehouses (name, location, capacity) VALUES
 ('Fulfillment Center', 'TYS1', 1000),
@@ -40,8 +43,12 @@ INSERT INTO products (name, description, quantity, warehouse_id) VALUES
 ('Clipboard Sets', 'Plastic clipboards with attached pen', 40, 2),
 ('Handheld Radios', 'Warehouse communication sets', 40, 2);
 
+
 # Optional quick check
 SELECT COUNT(*) FROM products;
 
 # Re-enable foreign key constraints
 SET FOREIGN_KEY_CHECKS = 1;
+
+SELECT COUNT(*) FROM products;
+
