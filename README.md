@@ -54,13 +54,3 @@ WarehouseManager is a backend inventory management system designed to help admin
 **Jeff Sherwood**  
 
 
-## Coming Soon
-
--  Java Spring Boot backend API
--  Authentication and role-based access control
--  Cloud deployment with sample frontend integration
-
-## Author
-
-Jeff Sherwood 
-
