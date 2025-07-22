@@ -53,8 +53,6 @@ WarehouseManager is a backend inventory management system designed to help admin
 
 **Jeff Sherwood**  
 
-=======
-3. (Optional) Seed with test data using `data.sql`
 
 ## Coming Soon
 
