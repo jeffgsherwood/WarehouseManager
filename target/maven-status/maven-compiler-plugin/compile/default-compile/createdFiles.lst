@@ -1,0 +1,4 @@
+com\example\demo\WarehouseManagerApplication.class
+com\example\demo\entities\Warehouse.class
+com\example\demo\controllers\WarehouseController.class
+com\example\demo\repositories\WarehouseRepository.class
