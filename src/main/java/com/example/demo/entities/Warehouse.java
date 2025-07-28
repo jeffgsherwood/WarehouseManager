@@ -14,9 +14,8 @@ public class Warehouse {
     private String location;
     private Integer capacity;
 
-    // We’ll add the list of products later once Product is built
 
-    // Getters and Setters!
+    // Getters and Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
