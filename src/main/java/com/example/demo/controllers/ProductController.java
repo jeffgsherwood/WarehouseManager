@@ -1,101 +1,80 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Product;
-import com.example.demo.entities.Warehouse;
-import com.example.demo.repositories.ProductRepository;
-import com.example.demo.repositories.WarehouseRepository; // Import WarehouseRepository
+import com.example.demo.ProductService;
+import com.example.demo.WarehouseCapacityExceededException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus; // Import HttpStatus
-import org.springframework.http.ResponseEntity; // Import ResponseEntity
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional; // Import Optional
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/products") // Base URL for all endpoints in this controller
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepo;
+    private ProductService productService; // Connects to our service layer
 
-    @Autowired
-    private WarehouseRepository warehouseRepo; // Inject WarehouseRepository
-
-    // Endpoint to retrieve all products
+    // Get all products
     @GetMapping
     public List<Product> getAllProducts() {
-        return productRepo.findAll();
+        return productService.getAllProducts();
     }
 
-    // Endpoint to retrieve a specific product by its ID
+    // Get a single product by ID
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable Integer id) {
-        Optional<Product> product = productRepo.findById(id);
-        return product.map(ResponseEntity::ok)
-                      .orElseGet(() -> ResponseEntity.notFound().build());
+        Product product = productService.getProductById(id);
+        if (product == null) {
+            return ResponseEntity.notFound().build(); // 404 if product not found (no body needed here as per original design)
+        }
+        return ResponseEntity.ok(product); // 200 with product data
     }
 
-    // Endpoint to create a new product
+    // Create a new product
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        // Basic validation: Check if the associated warehouse exists
-        if (product.getWarehouse() == null || product.getWarehouse().getId() == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+    public ResponseEntity<?> createProduct(@RequestBody Product product) {
+        try {
+            Product savedProduct = productService.createProduct(product);
+            return new ResponseEntity<>(savedProduct, HttpStatus.CREATED); // 201 on success
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage()); // 400 for validation errors
+        } catch (WarehouseCapacityExceededException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); // 400 for capacity issues
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error: " + e.getMessage()); // 500 for other errors
         }
-
-        Optional<Warehouse> warehouseOptional = warehouseRepo.findById(product.getWarehouse().getId());
-        if (warehouseOptional.isEmpty()) {
-            return ResponseEntity.badRequest().build(); // Warehouse not found
-        }
-
-        Product savedProduct = productRepo.save(product);
-        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
-    // Endpoint to update a specific product by its ID
+    // Update an existing product
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Integer id, @RequestBody Product productDetails) {
-        Optional<Product> productOptional = productRepo.findById(id);
-
-        if (productOptional.isEmpty()) {
-            return ResponseEntity.notFound().build(); // Product not found
-        }
-
-        Product existingProduct = productOptional.get();
-
-        // Update fields that are provided in the request body
-        if (productDetails.getName() != null) {
-            existingProduct.setName(productDetails.getName());
-        }
-        if (productDetails.getDescription() != null) {
-            existingProduct.setDescription(productDetails.getDescription());
-        }
-        if (productDetails.getQuantity() != null) {
-            existingProduct.setQuantity(productDetails.getQuantity());
-        }
-
-        // If a new warehouse is provided, check if it exists
-        if (productDetails.getWarehouse() != null && productDetails.getWarehouse().getId() != null) {
-            Optional<Warehouse> newWarehouseOptional = warehouseRepo.findById(productDetails.getWarehouse().getId());
-            if (newWarehouseOptional.isEmpty()) {
-                return ResponseEntity.badRequest().build(); // New warehouse not found
+    public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody Product productDetails) {
+        try {
+            Product updatedProduct = productService.updateProduct(id, productDetails);
+            if (updatedProduct == null) {
+                // CORRECTED LINE 58: Use status().body() for a 404 with a message
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found.");
             }
-            existingProduct.setWarehouse(newWarehouseOptional.get());
+            return ResponseEntity.ok(updatedProduct); // 200 with updated product
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage()); // 400 for validation errors
+        } catch (WarehouseCapacityExceededException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); // 400 for capacity issues
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error: " + e.getMessage()); // 500 for other errors
         }
-
-        Product updatedProduct = productRepo.save(existingProduct);
-        return ResponseEntity.ok(updatedProduct);
     }
 
-    // Endpoint to delete a specific product by its ID
+    // Delete a product
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable Integer id) {
-        if (productRepo.existsById(id)) {
-            productRepo.deleteById(id);
-            return ResponseEntity.ok("Product with ID " + id + " has been deleted successfully.");
+        if (productService.deleteProduct(id)) {
+            return ResponseEntity.ok("Product with ID " + id + " deleted successfully."); // 200 on success
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found."); // 404 if not found
         }
     }
 }
