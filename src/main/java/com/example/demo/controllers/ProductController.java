@@ -29,7 +29,7 @@ public class ProductController {
     public ResponseEntity<Product> getProductById(@PathVariable Integer id) {
         Product product = productService.getProductById(id);
         if (product == null) {
-            return ResponseEntity.notFound().build(); // 404 if product not found (no body needed here as per original design)
+            return ResponseEntity.notFound().build(); // 404 if product not found 
         }
         return ResponseEntity.ok(product); // 200 with product data
     }
@@ -54,9 +54,8 @@ public class ProductController {
     public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody Product productDetails) {
         try {
             Product updatedProduct = productService.updateProduct(id, productDetails);
-            if (updatedProduct == null) {
-                // CORRECTED LINE 58: Use status().body() for a 404 with a message
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found.");
+            if (updatedProduct == null) {                
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found.");
             }
             return ResponseEntity.ok(updatedProduct); // 200 with updated product
         } catch (IllegalArgumentException e) {
