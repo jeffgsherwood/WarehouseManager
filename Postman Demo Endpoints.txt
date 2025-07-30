@@ -1,0 +1,168 @@
+# Postman Demo Endpoints for Inventory Management API
+
+# --- Setup Instructions ---
+# 1. Ensure your Spring Boot application is running.
+# 2. Ensure your MySQL database is running and `warehouse_manager` is initialized with schema.sql and data.sql.
+# 3. Open Postman.
+# 4. For each section, create a new request in Postman.
+# 5. Copy the Method, URL, Headers (if any), and Body (if any) into Postman.
+# 6. Click 'Send' and observe the response.
+
+# Base URL for all requests: http://localhost:8080
+
+# --- 1. GET ALL WAREHOUSES ---
+# Objective: Retrieve a list of all warehouses in the system.
+# Verification: Should return a JSON array containing your two initial warehouses.
+# METHOD: GET
+# URL: http://localhost:8080/warehouses
+# HEADERS:
+#   (None)
+# BODY:
+#   (None)
+
+# --- 2. GET A SPECIFIC WAREHOUSE ---
+# Objective: Retrieve details for a single warehouse by its ID.
+# Verification: Should return details for 'Fulfillment Center'.
+# METHOD: GET
+# URL: http://localhost:8080/warehouses/1
+# HEADERS:
+#   (None)
+# BODY:
+#   (None)
+
+# --- 3. GET ALL PRODUCTS ---
+# Objective: Retrieve a list of all products across all warehouses.
+# Verification: Should return a JSON array containing all 20 initial products.
+# METHOD: GET
+# URL: http://localhost:8080/products
+# HEADERS:
+#   (None)
+# BODY:
+#   (None)
+
+# --- 4. GET A SPECIFIC PRODUCT ---
+# Objective: Retrieve details for a single product by its ID.
+# Verification: Should return details for 'USB Cables'.
+# METHOD: GET
+# URL: http://localhost:8080/products/1
+# HEADERS:
+#   (None)
+# BODY:
+#   (None)
+
+# --- 5. CREATE A NEW PRODUCT (SUCCESS) ---
+# Objective: Add a new product to a warehouse.
+# Verification: Should return 201 Created and the new product's details with an assigned ID.
+# METHOD: POST
+# URL: http://localhost:8080/products
+# HEADERS:
+#   Content-Type: application/json
+# BODY (raw JSON):
+{
+    "name": "Demo Product X",
+    "description": "Product for demonstration purposes.",
+    "quantity": 25,
+    "warehouse": {
+        "id": 1
+    }
+}
+
+# --- 6. CREATE A NEW PRODUCT (EDGE CASE: WAREHOUSE CAPACITY EXCEEDED) ---
+# Objective: Demonstrate handling of warehouse capacity limit.
+# Verification: Should return 400 Bad Request with a message indicating capacity overflow.
+# METHOD: POST
+# URL: http://localhost:8080/products
+# HEADERS:
+#   Content-Type: application/json
+# BODY (raw JSON):
+{
+    "name": "Excessive Demo Product",
+    "description": "This product will exceed warehouse 1's capacity.",
+    "quantity": 10000,
+    "warehouse": {
+        "id": 1
+    }
+}
+
+# --- 7. CREATE A NEW PRODUCT (EDGE CASE: INVALID WAREHOUSE ID) ---
+# Objective: Demonstrate handling of an invalid warehouse reference.
+# Verification: Should return 400 Bad Request with a message about no warehouse found.
+# METHOD: POST
+# URL: http://localhost:8080/products
+# HEADERS:
+#   Content-Type: application/json
+# BODY (raw JSON):
+{
+    "name": "Product for Non-Existent Warehouse",
+    "description": "Attempting to add to warehouse 999.",
+    "quantity": 10,
+    "warehouse": {
+        "id": 999
+    }
+}
+
+# --- 8. UPDATE AN EXISTING PRODUCT (SUCCESS) ---
+# Objective: Modify the quantity and description of an existing product.
+# Verification: Should return 200 OK and the updated product details.
+# METHOD: PUT
+# URL: http://localhost:8080/products/1
+# HEADERS:
+#   Content-Type: application/json
+# BODY (raw JSON):
+{
+    "name": "USB Cables",
+    "description": "Updated: 3-pack of braided 6ft USB-C cords, now with better insulation.",
+    "quantity": 105,
+    "warehouse": {
+        "id": 1
+    }
+}
+
+# --- 9. UPDATE AN EXISTING PRODUCT (EDGE CASE: PRODUCT NOT FOUND) ---
+# Objective: Demonstrate updating a product that does not exist.
+# Verification: Should return 404 Not Found.
+# METHOD: PUT
+# URL: http://localhost:8080/products/9999
+# HEADERS:
+#   Content-Type: application/json
+# BODY (raw JSON):
+{
+    "name": "Non-existent Product",
+    "quantity": 10
+}
+
+# --- 10. UPDATE AN EXISTING PRODUCT (EDGE CASE: CAPACITY EXCEEDED ON UPDATE) ---
+# Objective: Demonstrate that updating a product's quantity can also exceed capacity.
+# Verification: Should return 400 Bad Request with a capacity-related message.
+# Note: Adjust the quantity below if needed based on your current warehouse 1 occupancy.
+#      A high value like 900 will likely cause an overflow if other products exist.
+# METHOD: PUT
+# URL: http://localhost:8080/products/1
+# HEADERS:
+#   Content-Type: application/json
+# BODY (raw JSON):
+{
+    "quantity": 900
+}
+
+# --- 11. DELETE AN EXISTING PRODUCT (SUCCESS) ---
+# Objective: Remove a product from the database.
+# Verification: Should return 200 OK with a success message.
+# Note: Use the ID of a product you are willing to delete (e.g., the 'Demo Product X' you created earlier, or one from data.sql if you reset your DB).
+#      You can run GET /products first to find an ID to delete.
+# METHOD: DELETE
+# URL: http://localhost:8080/products/21
+# HEADERS:
+#   (None)
+# BODY:
+#   (None)
+
+# --- 12. DELETE A NON-EXISTENT PRODUCT ---
+# Objective: Demonstrate handling deletion of a product that doesn't exist.
+# Verification: Should return 404 Not Found.
+# METHOD: DELETE
+# URL: http://localhost:8080/products/9999
+# HEADERS:
+#   (None)
+# BODY:
+#   (None)
