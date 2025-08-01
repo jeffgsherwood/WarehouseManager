@@ -1,5 +1,6 @@
-package com.example.demo; 
+package com.example.demo.services; 
 
+import com.example.demo.WarehouseCapacityExceededException;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.Warehouse;
 import com.example.demo.repositories.ProductRepository;
@@ -116,4 +117,12 @@ public class ProductService {
             );
         }
     }
+    // Filters products by warehouse
+    public List<Product> getProductsByWarehouse(Integer warehouseId) {
+        Warehouse warehouse = new Warehouse();
+        warehouse.setId(warehouseId);
+        return productRepository.findByWarehouse(warehouse);
+    	   
+    }
+
 }

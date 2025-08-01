@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Product;
-import com.example.demo.ProductService;
+import com.example.demo.services.ProductService;
 import com.example.demo.WarehouseCapacityExceededException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +32,15 @@ public class ProductController {
             return ResponseEntity.notFound().build(); // 404 if product not found 
         }
         return ResponseEntity.ok(product); // 200 with product data
+    }
+    // Get products by warehouse ID
+    @GetMapping("/warehouses/{id}/products")
+    public ResponseEntity<List<Product>> getProductsByWarehouseId(@PathVariable Integer id) {
+        List<Product> products = productService.getProductsByWarehouse(id);
+        if (products.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(products);
     }
 
     // Create a new product
