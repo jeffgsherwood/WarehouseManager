@@ -8,12 +8,14 @@ WarehouseManager is a backend inventory management system designed to help admin
 - ✅ Tables for `warehouses` and `products`, with foreign key relationships
 - ✅ `schema.sql` for table creation
 - ✅ `data.sql` for reproducible test data (2 warehouses, 20 products)
-- ✅ REST API with working `GET /warehouses` and `GET /products` endpoints
-- ✅ Full CRUD support for `/products`
+- ✅ Full CRUD support for `/products` endpoints
+- ✅ Full CRUD support for `/warehouses` endpoints
 - ✅ Capacity constraints checked before product insertion and updates
 - ✅ Custom exception handling for warehouse capacity exceeded
-- ✅ Endpoints for product summaries (name and quantity)
-- ✅ Endpoint for searching products by name or partial name
+- ✅ Endpoints for product summaries (name and quantity) for all products or by warehouse
+- ✅ Endpoint for searching products by name or partial name (case-insensitive)
+- ✅ Basic endpoints for retrieving warehouse data and filtering products by warehouse
+- ✅ Endpoints for creating and deleting warehouses
 
 ## How to Use
 
@@ -29,8 +31,6 @@ WarehouseManager is a backend inventory management system designed to help admin
 |---|---|---|---|
 | `/warehouses` | GET | ✅ Done | Retrieves all warehouse records |
 | `/warehouses/{id}` | GET | ✅ Done | Retrieves a warehouse by its ID |
-| `/warehouses` | POST | ✅ Done | Creates a new warehouse |
-| `/warehouses/{id}` | DELETE | ✅ Done | Deletes a warehouse by its ID |
 | `/products` | GET | ✅ Done | Retrieves all product records |
 | `/products/{id}` | GET | ✅ Done | Retrieves a product by its ID |
 | `/products` | POST | ✅ Done | Adds a new product (with capacity check) |
@@ -40,6 +40,19 @@ WarehouseManager is a backend inventory management system designed to help admin
 | `/products/names-and-quantities` | GET | ✅ Done | Returns a list of all products with only their names and quantities |
 | `/warehouses/{id}/products/names-and-quantities` | GET | ✅ Done | Returns a list of product names and quantities for a specific warehouse |
 | `/products/search?name={query}` | GET | ✅ Done | Returns products whose names match or partially match a search term |
+| `/warehouses` | POST | ✅ Done | Creates a new warehouse |
+| `/warehouses/{id}` | DELETE | ✅ Done | Deletes a warehouse by its ID |
+
+## Edge Cases and Error Handling 
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/products/{id}` | PUT |✅ Done | Updates a non-existent product |
+| `/products/{id}` | DELETE |✅ Done | Deletes a non-existent product |
+| `/products` | POST |✅ Done | Adds a product exceeding warehouse capacity |
+| `/products` | POST |✅ Done | Adds a product to a non-existent warehouse |
+| `/products/{id}` | PUT |✅ Done | Updates a product's quantity to exceed warehouse capacity |
+| `/warehouses/{id}` | DELETE |✅ Done | Deletes a non-existent warehouse |
 
 ## Tech Stack
 
@@ -55,7 +68,6 @@ WarehouseManager is a backend inventory management system designed to help admin
 - Authentication and role-based access control
 - Cloud deployment with sample frontend integration
 - Swagger documentation for easy endpoint exploration
-- ✅ Done - Endpoints for creating new warehouses 
 
 ## Author
 
