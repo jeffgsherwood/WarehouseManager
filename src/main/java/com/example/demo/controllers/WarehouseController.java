@@ -1,9 +1,11 @@
 package com.example.demo.controllers;
 
+import com.example.demo.dto.ProductSummary;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.Warehouse;
 import com.example.demo.services.WarehouseService;
-import com.example.demo.services.ProductService; // Import the ProductService
+import com.example.demo.services.ProductService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ public class WarehouseController {
     @Autowired
     private WarehouseService warehouseService;
 
-    @Autowired // Inject the ProductService
+    @Autowired
     private ProductService productService;
 
     @GetMapping
@@ -41,6 +43,15 @@ public class WarehouseController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(products);
+    }
+    
+    @GetMapping("/{id}/products/names-and-quantities")
+    public ResponseEntity<List<ProductSummary>> getProductSummariesByWarehouseId(@PathVariable Integer id) {
+        List<ProductSummary> summaries = productService.getProductSummariesByWarehouseId(id);
+        if (summaries.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(summaries);
     }
     
     @PostMapping

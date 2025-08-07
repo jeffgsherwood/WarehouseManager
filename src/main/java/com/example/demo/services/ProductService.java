@@ -1,10 +1,12 @@
 package com.example.demo.services; 
 
 import com.example.demo.WarehouseCapacityExceededException;
+import com.example.demo.dto.ProductSummary;
 import com.example.demo.entities.Product;
 import com.example.demo.entities.Warehouse;
 import com.example.demo.repositories.ProductRepository;
 import com.example.demo.repositories.WarehouseRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -123,6 +125,13 @@ public class ProductService {
         warehouse.setId(warehouseId);
         return productRepository.findByWarehouse(warehouse);
     	   
+    }
+    public List<ProductSummary> getAllProductSummaries() {
+        return productRepository.findAllProductSummaries();
+    }
+    
+    public List<ProductSummary> getProductSummariesByWarehouseId(Integer warehouseId) {
+        return productRepository.findProductSummariesByWarehouseId(warehouseId);
     }
 
 }
