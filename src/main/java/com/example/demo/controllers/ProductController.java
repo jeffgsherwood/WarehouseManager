@@ -51,6 +51,10 @@ public class ProductController {
     public List<ProductSummary> getProductSummariesByWarehouseId(@PathVariable Integer id) {
         return productService.getProductSummariesByWarehouseId(id);
     }
+    @GetMapping("/search")
+    public List<Product> searchProducts(@RequestParam String name) {
+        return productService.searchProductsByName(name);
+    }
 
     // Create a new product
     @PostMapping

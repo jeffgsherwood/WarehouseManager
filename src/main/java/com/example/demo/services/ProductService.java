@@ -133,5 +133,8 @@ public class ProductService {
     public List<ProductSummary> getProductSummariesByWarehouseId(Integer warehouseId) {
         return productRepository.findProductSummariesByWarehouseId(warehouseId);
     }
+    public List<Product> searchProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name);
+    }
 
 }

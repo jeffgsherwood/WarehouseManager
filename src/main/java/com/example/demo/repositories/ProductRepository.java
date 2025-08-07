@@ -34,4 +34,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query("SELECT new com.example.demo.dto.ProductSummary(p.name, p.quantity) FROM Product p WHERE p.warehouse.id = :warehouseId")
     List<ProductSummary> findProductSummariesByWarehouseId(@Param("warehouseId") Integer warehouseId);
     
+    List<Product> findByNameContainingIgnoreCase(String name);
 }
