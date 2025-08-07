@@ -43,16 +43,6 @@ WarehouseManager is a backend inventory management system designed to help admin
 | `/warehouses` | POST | ✅ Done | Creates a new warehouse |
 | `/warehouses/{id}` | DELETE | ✅ Done | Deletes a warehouse by its ID |
 
-## Edge Cases and Error Handling 
-
-| Endpoint | Method | Description |
-|---|---|---|
-| `/products/{id}` | PUT |✅ Done | Updates a non-existent product |
-| `/products/{id}` | DELETE |✅ Done | Deletes a non-existent product |
-| `/products` | POST |✅ Done | Adds a product exceeding warehouse capacity |
-| `/products` | POST |✅ Done | Adds a product to a non-existent warehouse |
-| `/products/{id}` | PUT |✅ Done | Updates a product's quantity to exceed warehouse capacity |
-| `/warehouses/{id}` | DELETE |✅ Done | Deletes a non-existent warehouse |
 
 ## Tech Stack
 
