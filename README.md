@@ -25,23 +25,30 @@ WarehouseManager is a backend inventory management system designed to help admin
 4. Start the Spring Boot application via STS or `mvn spring-boot:run`.
 5. Access endpoints locally at `http://localhost:8080`.
 
-## API Endpoints
+## API Endpoints for Warehouses
 
 | Endpoint | Method | Status | Description |
 |---|---|---|---|
 | `/warehouses` | GET | ✅ Done | Retrieves all warehouse records |
 | `/warehouses/{id}` | GET | ✅ Done | Retrieves a warehouse by its ID |
+| `/warehouses/{id}/products` | GET | ✅ Done | Filters products by warehouse ID |
+| `/warehouses/{id}/products/names-and-quantities` | GET | ✅ Done | Returns a list of product names and quantities for a specific warehouse |
+| `/warehouses` | POST | ✅ Done | Creates a new warehouse |
+| `/warehouses/{id}` | DELETE | ✅ Done | Deletes a warehouse by its ID |
+
+## API Endpoints for Products
+
+| Endpoint | Method | Status | Description |
+|---|---|---|---|
 | `/products` | GET | ✅ Done | Retrieves all product records |
 | `/products/{id}` | GET | ✅ Done | Retrieves a product by its ID |
 | `/products` | POST | ✅ Done | Adds a new product (with capacity check) |
 | `/products/{id}` | PUT | ✅ Done | Updates product details (with capacity check) |
 | `/products/{id}` | DELETE | ✅ Done | Deletes a product from the database |
-| `/warehouses/{id}/products` | GET | ✅ Done | Filters products by warehouse ID |
 | `/products/names-and-quantities` | GET | ✅ Done | Returns a list of all products with only their names and quantities |
-| `/warehouses/{id}/products/names-and-quantities` | GET | ✅ Done | Returns a list of product names and quantities for a specific warehouse |
 | `/products/search?name={query}` | GET | ✅ Done | Returns products whose names match or partially match a search term |
-| `/warehouses` | POST | ✅ Done | Creates a new warehouse |
-| `/warehouses/{id}` | DELETE | ✅ Done | Deletes a warehouse by its ID |
+
+
 
 
 ## Tech Stack
