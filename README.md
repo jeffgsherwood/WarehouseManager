@@ -29,14 +29,14 @@ WarehouseManager is a backend inventory management system designed to help admin
 |---|---|---|---|
 | `/warehouses` | GET | ✅ Done | Retrieves all warehouse records |
 | `/warehouses/{id}` | GET | ✅ Done | Retrieves a warehouse by its ID |
-| `/warehouses` | POST | ⬜ To Do | Creates a new warehouse |
-| `/warehouses/{id}` | DELETE | ⬜ To Do | Deletes a warehouse by its ID |
+| `/warehouses` | POST | ✅ Done | Creates a new warehouse |
+| `/warehouses/{id}` | DELETE | ✅ Done | Deletes a warehouse by its ID |
 | `/products` | GET | ✅ Done | Retrieves all product records |
 | `/products/{id}` | GET | ✅ Done | Retrieves a product by its ID |
 | `/products` | POST | ✅ Done | Adds a new product (with capacity check) |
 | `/products/{id}` | PUT | ✅ Done | Updates product details (with capacity check) |
 | `/products/{id}` | DELETE | ✅ Done | Deletes a product from the database |
-| `/warehouses/{id}/products` | GET | ⬜ To Do | Filters products by warehouse ID |
+| `/warehouses/{id}/products` | GET | ✅ Done | Filters products by warehouse ID |
 | `/products/names-and-quantities` | GET | ✅ Done | Returns a list of all products with only their names and quantities |
 | `/warehouses/{id}/products/names-and-quantities` | GET | ✅ Done | Returns a list of product names and quantities for a specific warehouse |
 | `/products/search?name={query}` | GET | ✅ Done | Returns products whose names match or partially match a search term |
@@ -55,7 +55,7 @@ WarehouseManager is a backend inventory management system designed to help admin
 - Authentication and role-based access control
 - Cloud deployment with sample frontend integration
 - Swagger documentation for easy endpoint exploration
-- Endpoints for creating new warehouses (Bonus Challenge)
+- ✅ Done - Endpoints for creating new warehouses 
 
 ## Author
 
