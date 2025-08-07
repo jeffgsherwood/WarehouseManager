@@ -25,6 +25,11 @@ WarehouseManager is a backend inventory management system designed to help admin
 4. Start the Spring Boot application via STS or `mvn spring-boot:run`.
 5. Access endpoints locally at `http://localhost:8080`.
 
+## API Documentation
+
+Explore all API endpoints, their schemas, and try them out interactively using the Swagger UI.
+**Swagger UI:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
 ## API Endpoints for Warehouses
 
 | Endpoint | Method | Status | Description |
