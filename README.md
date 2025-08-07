@@ -12,6 +12,8 @@ WarehouseManager is a backend inventory management system designed to help admin
 - ✅ Full CRUD support for `/products`
 - ✅ Capacity constraints checked before product insertion and updates
 - ✅ Custom exception handling for warehouse capacity exceeded
+- ✅ Endpoints for product summaries (name and quantity)
+- ✅ Endpoint for searching products by name or partial name
 
 ## How to Use
 
@@ -27,11 +29,17 @@ WarehouseManager is a backend inventory management system designed to help admin
 |---|---|---|---|
 | `/warehouses` | GET | ✅ Done | Retrieves all warehouse records |
 | `/warehouses/{id}` | GET | ✅ Done | Retrieves a warehouse by its ID |
+| `/warehouses` | POST | ⬜ To Do | Creates a new warehouse |
+| `/warehouses/{id}` | DELETE | ⬜ To Do | Deletes a warehouse by its ID |
 | `/products` | GET | ✅ Done | Retrieves all product records |
 | `/products/{id}` | GET | ✅ Done | Retrieves a product by its ID |
 | `/products` | POST | ✅ Done | Adds a new product (with capacity check) |
 | `/products/{id}` | PUT | ✅ Done | Updates product details (with capacity check) |
 | `/products/{id}` | DELETE | ✅ Done | Deletes a product from the database |
+| `/warehouses/{id}/products` | GET | ⬜ To Do | Filters products by warehouse ID |
+| `/products/names-and-quantities` | GET | ✅ Done | Returns a list of all products with only their names and quantities |
+| `/warehouses/{id}/products/names-and-quantities` | GET | ✅ Done | Returns a list of product names and quantities for a specific warehouse |
+| `/products/search?name={query}` | GET | ✅ Done | Returns products whose names match or partially match a search term |
 
 ## Tech Stack
 
