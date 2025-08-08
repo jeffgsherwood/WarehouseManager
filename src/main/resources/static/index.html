@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeff's Warehouse Manager API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Jeff's Warehouse Manager API</h1>
+        <p>This API is up and running on AWS Elastic Beanstalk!</p>
+        
+        <h2>API Documentation & Endpoints</h2>
+        <div class="links">
+            <a href="swagger-ui.html" target="_blank" class="link-button">View API Documentation (Swagger UI)</a>
+            <a href="/products" class="link-button">View All Products API Endpoint</a>
+            <a href="/warehouses" class="link-button">View All Warehouses API Endpoint</a>
+            <a href="https://github.com/jeffgsherwood/WarehouseManager" target="_blank" class="link-button">View on GitHub</a>
+        </div>
+        
+        <h2>Live Data from the Database</h2>
+        <p>Fetching and displaying warehouses:</p>
+        <div id="warehouse-list" class="data-display">
+            Loading warehouses...
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+<footer>Created by <a href="https://github.com/jeffgsherwood/WarehouseManager" target="_blank">Jeff Sherwood</a> 2025</footer>
+</body>
+
+</html>

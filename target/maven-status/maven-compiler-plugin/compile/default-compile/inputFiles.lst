@@ -1,4 +1,11 @@
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\controllers\ProductController.java
 C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\controllers\WarehouseController.java
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\dto\ProductSummary.java
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\entities\Product.java
 C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\entities\Warehouse.java
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\repositories\ProductRepository.java
 C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\repositories\WarehouseRepository.java
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\services\ProductService.java
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\services\WarehouseService.java
+C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\WarehouseCapacityExceededException.java
 C:\Users\jeffg\OneDrive\Desktop\SpringBootProjects\WarehouseManager\src\main\java\com\example\demo\WarehouseManagerApplication.java

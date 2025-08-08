@@ -1,4 +1,11 @@
+com\example\demo\WarehouseCapacityExceededException.class
+com\example\demo\entities\Product.class
 com\example\demo\WarehouseManagerApplication.class
-com\example\demo\entities\Warehouse.class
+com\example\demo\repositories\ProductRepository.class
+com\example\demo\dto\ProductSummary.class
+com\example\demo\controllers\ProductController.class
 com\example\demo\controllers\WarehouseController.class
+com\example\demo\services\ProductService.class
+com\example\demo\services\WarehouseService.class
+com\example\demo\entities\Warehouse.class
 com\example\demo\repositories\WarehouseRepository.class

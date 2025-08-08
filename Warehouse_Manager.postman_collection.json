@@ -19,12 +19,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/products",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							]
@@ -41,15 +39,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/products/1",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/4",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -64,16 +60,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/warehouses/1/products",
-							"protocol": "http",
+							"raw": "{{baseURL}}/warehouses",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
-								"warehouses",
-								"1",
-								"products"
+								"warehouses"
 							]
 						}
 					},
@@ -95,12 +87,10 @@
 							"raw": "{\r\n    \"name\": \"Jeff's eBay Warehouse\",\r\n    \"location\": \"KNX1\",\r\n    \"capacity\": 1500\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/products/names-and-quantities",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/names-and-quantities",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"names-and-quantities"
@@ -118,12 +108,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/warehouses/1/products/names-and-quantities",
-							"protocol": "http",
+							"raw": "{{baseURL}}/warehouses/1/products/names-and-quantities",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"warehouses",
 								"1",
@@ -143,12 +131,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/products/search?name=usb",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/search?name=usb",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"search"
@@ -179,7 +165,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Student's Big Book of Questions\",\r\n    \"description\": \"Questions to ask to make sure nobody learns anything\",\r\n    \"quantity\": 25,\r\n    \"warehouse\": {\r\n        \"id\": 1\r\n    }\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Laptop Backpack\",\r\n    \"description\": \"Backpack with a laptop compartment for superior protection\",\r\n    \"quantity\": 25,\r\n    \"warehouse\": {\r\n        \"id\": 1\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -187,12 +173,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/products",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products"
 							]
@@ -210,7 +194,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Big Book of Questions\",\r\n    \"description\": \"1001 Questions that waste everyone's time\",\r\n    \"quantity\": 105,\r\n    \"warehouse\": {\r\n        \"id\": 1\r\n    }\r\n}\r\n",
+							"raw": "{\r\n  \r\n    \"quantity\": 105,\r\n    \"warehouse\": {\r\n        \"id\": 1\r\n    }\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -218,15 +202,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/products/22",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/21",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
-								"22"
+								"21"
 							]
 						}
 					},
@@ -250,12 +232,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/products/9999",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/9999",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"9999"
@@ -273,15 +253,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/products/22",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/21",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
-								"22"
+								"21"
 							]
 						}
 					},
@@ -296,12 +274,10 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/products/9999",
-							"protocol": "http",
+							"raw": "{{baseURL}}/products/9999",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"products",
 								"9999"
@@ -321,12 +297,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/warehouses",
-							"protocol": "http",
+							"raw": "{{baseURL}}/warehouses",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"warehouses"
 							]
@@ -343,15 +317,50 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/warehouses/1",
-							"protocol": "http",
+							"raw": "{{baseURL}}/warehouses/1",
 							"host": [
-								"localhost"
+								"{{baseURL}}"
 							],
-							"port": "8080",
 							"path": [
 								"warehouses",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No Warehouse Found Edge Case",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Delivery Center\",\r\n    \"location\": \"DNA6\",\r\n    \"capacity\": 10000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/warehouses/5",
+							"protocol": "http",
+							"host": [
+								"jeffwarehousemanager",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
+							],
+							"path": [
+								"warehouses",
+								"5"
 							]
 						}
 					},
@@ -375,12 +384,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/warehouses",
+							"raw": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/warehouses",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"jeffwarehousemanager",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"warehouses"
 							]
@@ -406,43 +417,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/products",
+							"raw": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/products",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"jeffwarehousemanager",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
 							],
-							"port": "8080",
-							"path": [
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "No Warehouse Found Edge Case",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Product for Non-Existent Warehouse\",\r\n    \"description\": \"Attempting to add to warehouse 999.\",\r\n    \"quantity\": 10,\r\n    \"warehouse\": {\r\n        \"id\": 999\r\n    }\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/products",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
 							"path": [
 								"products"
 							]
@@ -468,25 +450,19 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/products/22",
+							"raw": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/products/20",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"jeffwarehousemanager",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"products",
-								"22"
+								"20"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Request",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				},
@@ -499,12 +475,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/warehouses/4",
+							"raw": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/warehouses/4",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"jeffwarehousemanager",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"warehouses",
 								"4"
@@ -522,21 +500,30 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/warehouses/44",
+							"raw": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/warehouses/4",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"jeffwarehousemanager",
+								"us-east-2",
+								"elasticbeanstalk",
+								"com"
 							],
-							"port": "8080",
 							"path": [
 								"warehouses",
-								"44"
+								"4"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com",
+			"type": "default"
 		}
 	]
 }
