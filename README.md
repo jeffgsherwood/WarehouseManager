@@ -16,6 +16,8 @@ WarehouseManager is a backend inventory management system designed to help admin
 - ✅ Endpoint for searching products by name or partial name (case-insensitive)
 - ✅ Basic endpoints for retrieving warehouse data and filtering products by warehouse
 - ✅ Endpoints for creating and deleting warehouses
+- ✅ Deployed to **AWS Elastic Beanstalk** with an integrated database on **AWS RDS**.
+- ✅ Simple multi-page frontend to visualize live data from the deployed API.
 
 ## How to Use
 
@@ -25,15 +27,25 @@ WarehouseManager is a backend inventory management system designed to help admin
 4. Start the Spring Boot application via STS or `mvn spring-boot:run`.
 5. Access endpoints locally at `http://localhost:8080`.
 
-
 ## Hosted on AWS Elastic Beanstalk
 Click Here to Check it out: http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/
 
+## API & Frontend Documentation
 
-## API Documentation
+* **Swagger UI:** Explore all API endpoints, their schemas, and try them out interactively.
+    <br>Swagger UI: http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/swagger-ui.html
+* **Frontend Homepage:** A simple multi-page frontend built with HTML, CSS, and JavaScript.
+    <br>Homepage: http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/
+* **GitHub Repository:** View the full source code for the project.
+    <br>GitHub: https://github.com/jeffgsherwood/WarehouseManager
 
-Explore all API endpoints, their schemas, and try them out interactively using the Swagger UI.
-**Swagger UI:** http://jeffwarehousemanager.us-east-2.elasticbeanstalk.com/swagger-ui/index.html
+## Frontend Pages
+
+| Page | URL | Description |
+|---|---|---|
+| Homepage | `/` | A welcome page with links to documentation and other pages. |
+| Warehouses | `/warehouses.html` | Displays a live list of all warehouses from the database. |
+| Products | `/products.html` | Displays a live list of all products from the database. |
 
 ## API Endpoints for Warehouses
 
@@ -58,9 +70,6 @@ Explore all API endpoints, their schemas, and try them out interactively using t
 | `/products/names-and-quantities` | GET | ✅ Done | Returns a list of all products with only their names and quantities |
 | `/products/search?name={query}` | GET | ✅ Done | Returns products whose names match or partially match a search term |
 
-
-
-
 ## Tech Stack
 
 - Java 17
@@ -69,12 +78,13 @@ Explore all API endpoints, their schemas, and try them out interactively using t
 - Maven
 - Spring Data JPA
 - RESTful API architecture
+- HTML, CSS, and JavaScript for the frontend
 
 ## Coming Soon
 
 - Authentication and role-based access control
-- Cloud deployment with sample frontend integration
-- Swagger documentation for easy endpoint exploration
+- Inline CRUD functionality on the frontend pages
+- Advanced search forms on the frontend
 
 ## Author
 
