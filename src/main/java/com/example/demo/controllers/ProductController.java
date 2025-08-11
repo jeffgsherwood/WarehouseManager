@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// This is the controller class for handling product-related HTTP requests
 @RestController
 @RequestMapping("/products") // Base URL for all endpoints in this controller
 public class ProductController {
@@ -34,6 +35,7 @@ public class ProductController {
         }
         return ResponseEntity.ok(product); // 200 with product data
     }
+    
     // Get products by warehouse ID
     @GetMapping("/warehouses/{id}/products")
     public ResponseEntity<List<Product>> getProductsByWarehouseId(@PathVariable Integer id) {
@@ -43,14 +45,20 @@ public class ProductController {
         }
         return ResponseEntity.ok(products);
     }
+    
+    // Get summaries of all products including names and quantities
     @GetMapping("/names-and-quantities")
     public List<ProductSummary> getAllProductSummaries() {
         return productService.getAllProductSummaries();
     }
+    
+    // Get product summaries for a specific warehouse
     @GetMapping("/warehouses/{id}/products/names-and-quantities")
     public List<ProductSummary> getProductSummariesByWarehouseId(@PathVariable Integer id) {
         return productService.getProductSummariesByWarehouseId(id);
     }
+    
+    // Search products by name
     @GetMapping("/search")
     public List<Product> searchProducts(@RequestParam String name) {
         return productService.searchProductsByName(name);
@@ -77,7 +85,8 @@ public class ProductController {
         try {
             Product updatedProduct = productService.updateProduct(id, productDetails);
             if (updatedProduct == null) {                
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found.");
+                // Product not found, return 404 with message
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product with ID " + id + " not found.");
             }
             return ResponseEntity.ok(updatedProduct); // 200 with updated product
         } catch (IllegalArgumentException e) {
